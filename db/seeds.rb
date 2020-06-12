@@ -1,7 +1,7 @@
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
 #
-recipes = Recipe.create([
+Recipe.create([
     {
         title: "Pizza with mashroomes",
         ingredients: "1 tablespoon olive oil, 8 ounces mushrooms, 1/2 medium red onion, 2 cloves garlic, 1 cup marinara sauce, ",
@@ -42,15 +42,15 @@ recipes = Recipe.create([
     }
   ])
   
-  users = User.create([
+  User.create([
     {
       name: "Anna",
       email: "anna@gmail.com",
-      password_digest: 123456
+      password: "123456"
     },
     {
         name: "admin",
         email: "admin@gmail.com",
-        password_digest: 123456
+        password: "123456"
     }
   ])

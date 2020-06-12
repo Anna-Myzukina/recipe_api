@@ -1,5 +1,9 @@
 class Api::V1::UsersController < ApplicationController
     skip_before_action :authenticate_request, only: %i[login sign_up]
+    def index
+      @users = User.all 
+      render json: @users
+    end
 
     def sign_up
         @user = User.create(user_params)

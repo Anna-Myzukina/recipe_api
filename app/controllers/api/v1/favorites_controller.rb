@@ -3,15 +3,18 @@ class Api::V1::FavoritesController < ApplicationController
   def create
     @recipe = Recipe.find(params[:recipe_id])
     @recipe.clients << @current_user
-    if @favorite.save
-      render json: @favorite, status: :created
-    else
-      render json: @favorite.errors, status: :unprocessable_entity
-    end
+
+    response = { message: 'Recipe successfully added!'}
+    render json: response
+ 
   end
 
   def destroy
-    @favorite.destroy
+    @recipe = Recipe.find(params[:recipe_id])
+    @user = @recipe.clients
+    @recipe.clients.delete(@user)
+    response = { message: 'Removed from favorites successfully!'}
+    render json: response
   end
 
   private
