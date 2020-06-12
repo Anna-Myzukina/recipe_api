@@ -30,6 +30,7 @@ gem 'simple_command'
 
 group :development, :test do
   gem 'factory_bot_rails'
+  gem 'shoulda-matchers'
   gem 'rspec-rails', '~> 3.6'
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
