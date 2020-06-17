@@ -8,17 +8,41 @@
 In this project we Create models with associations and implement all requested features for users, recipes and favourites. Add authentication as described in requirements.
 
 ```
-rails generate scaffold User first_name:string last_name:string
+rails g scaffold Recipe title ingredients:text description:text calories:integer user:references
 ```
 
 ```
 rails db:migrate
 ```
 
+After move user_controller.rb to app/controllers/api/v1 and add Api::V1:: before UserController
+
+
+ rails g scaffold Favorite user:references recipe:references rate:integer
 
 
 
- 
+### User with admon role
+
+rails g migration add_role_to_users role:integer
+
+https://naturaily.com/blog/ruby-on-rails-enum
+
+class User < ApplicationRecord
+  `  enum role: [:client, :admin] `
+
+    has_many :favorites
+    has_many :recipes, through: :favorites
+    has_many :recipes
+
+    validates_presence_of :name, :email, :password_digest
+    validates :email, uniqueness: true
+
+    has_secure_password
+
+    
+end
+
         
         
 ### Testing https://leanpub.com/everydayrailsrspec/read_sample
