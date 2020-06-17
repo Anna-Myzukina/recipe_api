@@ -185,6 +185,8 @@ do:
             $ git reset --hard HEAD
             $ git clean -fd 
 
+            
+
 * NOTE before start chreate project using this command (name_of_project it`s example, you should change it on your own name of your project for example: facebook-clone...)
 
         rails new name_of_project --webpack=react --database=postgresql
