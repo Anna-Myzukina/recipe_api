@@ -171,6 +171,7 @@ By default, `config.debug_exception_response_format` is set to `:api`, when conf
 
 Finally, inside `app/controllers/application_controller.rb`, instead of:
 
+
                         class ApplicationController < ActionController::Base
                         end
 do:
