@@ -6,7 +6,8 @@ class User < ApplicationRecord
     has_many :favorite_recipes, through: :favorites, source: :favorite_recipe
     has_many :recipes
 
-    validates_presence_of :name, :email, :password_digest
+    validates :name, presence: true
+    validates :password_digest, presence: true
     validates :email, uniqueness: true
 
     has_secure_password
