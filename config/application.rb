@@ -25,12 +25,12 @@ module RecipeApi
     config.load_defaults 6.0
 
      #cors configuration
-     config.middleware.insert_before 0, Rack::Cors do
-      allow do
-        origins '*'
-        resource '*', :headers => :any, :methods => [:get, :post, :options]
-      end
-    end
+    #  config.middleware.insert_before 0, Rack::Cors do
+    #   allow do
+    #     origins '*'
+    #     resource '*', :headers => :any, :methods => [:get, :post, :options]
+    #   end
+    # end
     #autoloads lib folder during production
     config.eager_load_paths << Rails.root.join('lib')
 
