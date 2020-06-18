@@ -7,7 +7,9 @@
 
 In this project we Create models with associations and implement all requested features for users, recipes and favourites. Add authentication as described in requirements.
 
+## Live version:
 
+[Recipies](https://morning-ridge-74742.herokuapp.com/)
 
 ## Getting started
 
