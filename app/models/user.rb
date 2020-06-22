@@ -9,7 +9,12 @@ class User < ApplicationRecord
     validates :password_digest, presence: true
     validates :email, presence: true, uniqueness: { case_sensitive: false }
 
-   
+    def to_token_payload
+        {
+          sub: id,
+          name: name
+        }
+    end
 
     
 end
