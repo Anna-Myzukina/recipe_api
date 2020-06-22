@@ -41,16 +41,19 @@ Recipe.create([
       calories: 312
     }
   ])
+
   
-  User.create([
-    {
-      name: "Anna",
-      email: "anna@gmail.com",
-      password: "123456"
-    },
-    {
-        name: "admin",
-        email: "admin@gmail.com",
-        password: "123456"
-    }
-  ])
+  User.create!(
+    name: "admin",
+    email: "admin@gmail.com",
+    password: "123456",
+    password_confirmation: "123456",
+    admin: true
+  )
+
+  User.create!(
+      name: "Anna Muzykina",
+      email: "anna-muzykina@gmail.com",
+      password: "123456",
+      password_confirmation: "123456"
+  )

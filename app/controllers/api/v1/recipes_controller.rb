@@ -1,5 +1,5 @@
 class Api::V1::RecipesController < ApplicationController
-  before_action :set_recipe, only: [:show, :update, :destroy]
+  before_action :authenticate_user
 
   # GET /recipes
   def index
@@ -35,7 +35,9 @@ class Api::V1::RecipesController < ApplicationController
 
   # DELETE /recipes/1
   def destroy
-    @recipe.destroy
+    if current_user.admin?
+      @recipe.destroy
+    end
   end
 
   private
