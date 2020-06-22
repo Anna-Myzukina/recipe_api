@@ -1,6 +1,5 @@
 class User < ApplicationRecord
-    ROLES = [:client, :admin].freeze
-    enum role: ROLES
+    has_secure_password
 
     has_many :favorites, foreign_key: :client_id
     has_many :favorite_recipes, through: :favorites, source: :favorite_recipe
@@ -8,9 +7,9 @@ class User < ApplicationRecord
 
     validates :name, presence: true
     validates :password_digest, presence: true
-    validates :email, uniqueness: true
+    validates :email, presence: true, uniqueness: { case_sensitive: false }
 
-    has_secure_password
+   
 
     
 end
