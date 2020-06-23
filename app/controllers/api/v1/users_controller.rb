@@ -45,7 +45,9 @@ class Api::V1::UsersController < ApplicationController
         params.permit(
           :name,
           :email,
-          :password
+          :password,
+          :password_confirmation,
+          :admin
         )
     end
 end
