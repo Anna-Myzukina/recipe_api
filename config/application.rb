@@ -22,7 +22,7 @@ Bundler.require(*Rails.groups)
 module RecipeApi
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
-    config.load_defaults 6.0
+    config.load_defaults 6.0 and config.autoloader = :classic
 
      #cors configuration
     #  config.middleware.insert_before 0, Rack::Cors do
