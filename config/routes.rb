@@ -9,7 +9,6 @@ Rails.application.routes.draw do
     end
   end
 
-
   post 'auth/sign_up', to: 'api/v1/users#sign_up'
   post 'auth/login', to: 'api/v1/users#login'
 end
