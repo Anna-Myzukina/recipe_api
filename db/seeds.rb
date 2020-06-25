@@ -8,6 +8,7 @@ recipes = Recipe.create([
         description: "Preheat the oven to 450 degrees F.
         Heat the oil in a skillet over a medium heat. Add the mushrooms and onions and cook until tender and most of the liquid evaporates, about 5 minutes. Stir in the garlic and remove from the heat.
         Place the pizza crust on a baking sheet. Spread the sauce over the crust leaving a 1-inch border. Top with the mushroom mixture and sun-dried tomatoes. Sprinkle with the mozzarella and Parmesan cheeses. Bake until the crust is crisp and the cheese is nicely melted, about 13 minutes. Sprinkle with basil, cut into 8 slices and serve.",
+        image: "https://images.pexels.com/photos/315755/pexels-photo-315755.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
         calories: 350
     },
     {
@@ -17,6 +18,7 @@ recipes = Recipe.create([
       3/4 cup microgreens,
       3 large eggs",
       description: "description 2",
+      image: "https://images.pexels.com/photos/3296644/pexels-photo-3296644.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
       calories: 335.37
     },
     {
@@ -26,7 +28,7 @@ recipes = Recipe.create([
       1 tablespoon microgreens, 
       2 slices white toast, cut into 3-inch rounds",
       description: "description test 3",
-      
+      image: "https://images.pexels.com/photos/3296644/pexels-photo-3296644.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
       calories: 312
     },
     {
@@ -38,9 +40,26 @@ recipes = Recipe.create([
       1 tablespoon crumbled feta,
       3/4 cup microgreens or mesclun (mixed baby salad greens)",
       description: "description test 4",
+      image: "https://images.pexels.com/photos/1410235/pexels-photo-1410235.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
       calories: 312
     }
   ])
+
+  favorites = Favorite.create([
+    {
+      name: 'Microgreen',
+      description: 'Lorem ipsum sed loran',
+      rate: 5,
+      recipe: recipes.first
+    },
+    {
+      name: 'Pizza',
+      description: 'Lorem ipsum sed loran',
+      rate: 1,
+      recipe: recipes.first
+    }
+  ])
+  
   
   User.create!(name: "Jey Lo", email: "jelo@lopes.com", password: "lopes", password_confirmation: "lopes", admin: true)
   User.create!(name: "Jey Lo", email: "jennylo@lopes.com", password: "lopes", password_confirmation: "lopes")
