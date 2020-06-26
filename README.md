@@ -5,12 +5,23 @@
 
 `Users, recipes, favourit recipe.`
 
-In this project I was Created models with associations and implement all requested features for users, recipes and favourites. Added authentication as described in requirements.
+In this project we Create models with associations and implement all requested features for users, recipes and favourites. Add authentication as described in requirements.
 
-## Live version
+```
+rails generate scaffold User first_name:string last_name:string
+```
 
-[Find your Recipe](https://morning-ridge-74742.herokuapp.com/)
+```
+rails db:migrate
+```
 
+
+
+
+ 
+        
+        
+### Testing https://leanpub.com/everydayrailsrspec/read_sample
 
 ## Getting started
 - [ ] To get started with the app, clone the repo and then install the needed gems:
@@ -25,11 +36,17 @@ $ bundle install --without production
 $ rails db:create
 ```
 
-- [ ]
+- [ ] Bootstrap, for styling your front-end components. jQuery and Popper, for working with Bootstrap. Run the following command in your Terminal window to install these packages with the Yarn package manager:
 
-- [ ]
+```
+$  yarn add react-router-dom bootstrap jquery popper.js
+```
 
-- [ ]
+- [ ] 
+
+
+
+
 ## Features
 
 - [ ] The user logs in the app, only by typing the username (a proper authenticated login is not a mandatory requirement, but it is in the nice-to-have list)
@@ -130,7 +147,6 @@ By default, `config.debug_exception_response_format` is set to `:api`, when conf
 
 Finally, inside `app/controllers/application_controller.rb`, instead of:
 
-
                         class ApplicationController < ActionController::Base
                         end
 do:
@@ -144,8 +160,6 @@ do:
 
             $ git reset --hard HEAD
             $ git clean -fd 
-
-            
 
 * NOTE before start chreate project using this command (name_of_project it`s example, you should change it on your own name of your project for example: facebook-clone...)
 

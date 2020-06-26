@@ -23,13 +23,13 @@ default: &default
 
 development:
   <<: *default
-  database: recipe_api_capstone_development
+  database: find_your_recipe_development
 
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.
   # When left blank, postgres will use the default role. This is
   # the same name as the operating system user that initialized the database.
-  #username: recipe_api
+  #username: find_your_recipe
 
   # The password associated with the postgres role (username).
   #password:
@@ -57,7 +57,7 @@ development:
 # Do not set this db to the same as development or production.
 test:
   <<: *default
-  database: recipe_api_test
+  database: find_your_recipe_test
 
 # As with config/credentials.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
@@ -80,6 +80,6 @@ test:
 #
 production:
   <<: *default
-  database: recipe_api_production
-  username: recipe_api
-  password: <%= ENV['RECIPE_API_DATABASE_PASSWORD'] %>
+  database: find_your_recipe_production
+  username: find_your_recipe
+  password: <%= ENV['FIND_YOUR_RECIPE_DATABASE_PASSWORD'] %>

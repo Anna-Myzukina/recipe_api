@@ -1,4 +1,4 @@
-class RecipeSerializer < ActiveModel::Serializer
-  attributes :id, :title, :ingredients, :description, :calories
-  has_one :user
+class RecipeSerializer
+  include FastJsonapi::ObjectSerializer
+  attributes :name, :image, :ingredients, :calories
 end

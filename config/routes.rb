@@ -1,14 +1,16 @@
 Rails.application.routes.draw do
   namespace :api do
-    namespace :v1 do
-      resources :recipes, only: [:index, :show, :update, :destroy, :create] do
-        post :favorite, to:'favorites#create'
-        delete :unfavorite, to:'favorites#destroy'
-      end
-      resources :users, only: [:index, :show, :update, :destroy, :create]
+    namespace :version1 do
+      get 'recipes/index'
+      post 'recipes/create'
+      get '/show/:id', to: 'recipes#show'
+      delete '/destroy/:id', to: 'recipes#destroy'
     end
   end
-
-  post 'auth/sign_up', to: 'api/v1/users#sign_up'
-  post 'auth/login', to: 'api/v1/users#login'
+  root 'homepage#index'
+  post 'auth/register', to: 'users#register'
+  post 'auth/login', to: 'users#login'
+  get 'test', to: 'users#test'
+  get '/*path' => 'homepage#index'
+  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
