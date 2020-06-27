@@ -13,9 +13,6 @@ In this project we Create models with associations and implement all requested f
 
 
  
-        
-        
-### Testing https://leanpub.com/everydayrailsrspec/read_sample
 
 ## Getting started
 - [ ] To get started with the app, clone the repo and then install the needed gems:
@@ -96,6 +93,7 @@ $ rails generate rspec:install
 $ rspec
 ```
 
+### Testing [everydayrailsrspec](https://leanpub.com/everydayrailsrspec/read_sample)
 
 ## Show your support
 
