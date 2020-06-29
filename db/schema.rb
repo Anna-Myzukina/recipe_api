@@ -10,42 +10,38 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_25_142432) do
+ActiveRecord::Schema.define(version: 2020_06_11_155350) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "favorites", force: :cascade do |t|
-    t.integer "client_id"
-    t.integer "favorite_recipe_id"
-    t.integer "rate"
+  create_table "favourites", force: :cascade do |t|
+    t.string "title"
+    t.string "description"
+    t.integer "score"
+    t.bigint "recipe_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "name"
-    t.string "description"
+    t.index ["recipe_id"], name: "index_favourites_on_recipe_id"
   end
 
   create_table "recipes", force: :cascade do |t|
-    t.string "title"
-    t.text "ingredients"
-    t.text "description"
-    t.integer "calories"
-    t.bigint "user_id", null: false
+    t.string "name", null: false
+    t.text "ingredients", null: false
+    t.text "description", null: false
+    t.string "image", default: "https://github.com/Anna-Myzukina/microgreen/blob/master/src/img/easy-microgreens.jpg"
+    t.integer "calories", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "image", default: "https://github.com/Anna-Myzukina/microgreen/blob/master/src/img/easy-microgreens.jpg"
-    t.index ["user_id"], name: "index_recipes_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
     t.string "name"
     t.string "email"
     t.string "password_digest"
-    t.boolean "admin", default: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "role"
   end
 
-  add_foreign_key "recipes", "users"
+  add_foreign_key "favourites", "recipes"
 end
