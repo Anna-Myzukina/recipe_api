@@ -23,7 +23,7 @@ gem 'simple_command'
 
 group :development, :test do
   gem 'factory_bot_rails'
-  gem 'shoulda-matchers'
+  gem 'shoulda-matchers', '~> 4.0'
   gem 'rspec-rails', '~> 3.6'
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
 end
