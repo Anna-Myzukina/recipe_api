@@ -5,7 +5,7 @@ Rails.application.routes.draw do
         post :favorite, to:'favorites#create'
         delete :unfavorite, to:'favorites#destroy'
       end
-      resources :users, only: [:index, :show, :update, :destroy, :create]
+      resources :users
     end
   end
 

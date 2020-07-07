@@ -1,5 +1,5 @@
 class Api::V1::RecipesController < ApplicationController
-  before_action :set_recipe, only: [:show, :update, :destroy]
+  before_action :set_recipe, only: %i[show update destroy]
 
   # GET /recipes
   def index
@@ -39,13 +39,14 @@ class Api::V1::RecipesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_recipe
-      @recipe = Recipe.find(params[:id])
-    end
 
-    # Only allow a trusted parameter "white list" through.
-    def recipe_params
-      params.permit(:title, :ingredients, :description, :calories, :user_id)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_recipe
+    @recipe = Recipe.find(params[:id])
+  end
+
+  # Only allow a trusted parameter "white list" through.
+  def recipe_params
+    params.permit(:title, :ingredients, :description, :calories)
+  end
 end

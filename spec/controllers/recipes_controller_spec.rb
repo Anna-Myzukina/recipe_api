@@ -24,106 +24,102 @@ require 'rails_helper'
 # `rails-controller-testing` gem.
 
 RSpec.describe RecipesController, type: :controller do
-
   # This should return the minimal set of attributes required to create a valid
   # Recipe. As you add validations to Recipe, be sure to
   # adjust the attributes here as well.
-  let(:valid_attributes) {
-    skip("Add a hash of attributes valid for your model")
-  }
+  let(:valid_attributes) do
+    skip('Add a hash of attributes valid for your model')
+  end
 
-  let(:invalid_attributes) {
-    skip("Add a hash of attributes invalid for your model")
-  }
+  let(:invalid_attributes) do
+    skip('Add a hash of attributes invalid for your model')
+  end
 
   # This should return the minimal set of values that should be in the session
   # in order to pass any filters (e.g. authentication) defined in
   # RecipesController. Be sure to keep this updated too.
   let(:valid_session) { {} }
 
-  describe "GET #index" do
-    it "returns a success response" do
+  describe 'GET #index' do
+    it 'returns a success response' do
       recipe = Recipe.create! valid_attributes
       get :index, params: {}, session: valid_session
       expect(response).to be_successful
     end
   end
 
-  describe "GET #show" do
-    it "returns a success response" do
+  describe 'GET #show' do
+    it 'returns a success response' do
       recipe = Recipe.create! valid_attributes
-      get :show, params: {id: recipe.to_param}, session: valid_session
+      get :show, params: { id: recipe.to_param }, session: valid_session
       expect(response).to be_successful
     end
   end
 
-  describe "POST #create" do
-    context "with valid params" do
-      it "creates a new Recipe" do
-        expect {
-          post :create, params: {recipe: valid_attributes}, session: valid_session
-        }.to change(Recipe, :count).by(1)
+  describe 'POST #create' do
+    context 'with valid params' do
+      it 'creates a new Recipe' do
+        expect do
+          post :create, params: { recipe: valid_attributes }, session: valid_session
+        end.to change(Recipe, :count).by(1)
       end
 
-      it "renders a JSON response with the new recipe" do
-
-        post :create, params: {recipe: valid_attributes}, session: valid_session
+      it 'renders a JSON response with the new recipe' do
+        post :create, params: { recipe: valid_attributes }, session: valid_session
         expect(response).to have_http_status(:created)
         expect(response.content_type).to eq('application/json')
         expect(response.location).to eq(recipe_url(Recipe.last))
       end
     end
 
-    context "with invalid params" do
-      it "renders a JSON response with errors for the new recipe" do
-
-        post :create, params: {recipe: invalid_attributes}, session: valid_session
+    context 'with invalid params' do
+      it 'renders a JSON response with errors for the new recipe' do
+        post :create, params: { recipe: invalid_attributes }, session: valid_session
         expect(response).to have_http_status(:unprocessable_entity)
         expect(response.content_type).to eq('application/json')
       end
     end
   end
 
-  describe "PUT #update" do
-    context "with valid params" do
-      let(:new_attributes) {
-        skip("Add a hash of attributes valid for your model")
-      }
-
-      it "updates the requested recipe" do
-        recipe = Recipe.create! valid_attributes
-        put :update, params: {id: recipe.to_param, recipe: new_attributes}, session: valid_session
-        recipe.reload
-        skip("Add assertions for updated state")
+  describe 'PUT #update' do
+    context 'with valid params' do
+      let(:new_attributes) do
+        skip('Add a hash of attributes valid for your model')
       end
 
-      it "renders a JSON response with the recipe" do
+      it 'updates the requested recipe' do
+        recipe = Recipe.create! valid_attributes
+        put :update, params: { id: recipe.to_param, recipe: new_attributes }, session: valid_session
+        recipe.reload
+        skip('Add assertions for updated state')
+      end
+
+      it 'renders a JSON response with the recipe' do
         recipe = Recipe.create! valid_attributes
 
-        put :update, params: {id: recipe.to_param, recipe: valid_attributes}, session: valid_session
+        put :update, params: { id: recipe.to_param, recipe: valid_attributes }, session: valid_session
         expect(response).to have_http_status(:ok)
         expect(response.content_type).to eq('application/json')
       end
     end
 
-    context "with invalid params" do
-      it "renders a JSON response with errors for the recipe" do
+    context 'with invalid params' do
+      it 'renders a JSON response with errors for the recipe' do
         recipe = Recipe.create! valid_attributes
 
-        put :update, params: {id: recipe.to_param, recipe: invalid_attributes}, session: valid_session
+        put :update, params: { id: recipe.to_param, recipe: invalid_attributes }, session: valid_session
         expect(response).to have_http_status(:unprocessable_entity)
         expect(response.content_type).to eq('application/json')
       end
     end
   end
 
-  describe "DELETE #destroy" do
-    it "destroys the requested recipe" do
+  describe 'DELETE #destroy' do
+    it 'destroys the requested recipe' do
       recipe = Recipe.create! valid_attributes
-      expect {
-        delete :destroy, params: {id: recipe.to_param}, session: valid_session
-      }.to change(Recipe, :count).by(-1)
+      expect do
+        delete :destroy, params: { id: recipe.to_param }, session: valid_session
+      end.to change(Recipe, :count).by(-1)
     end
   end
-
 end

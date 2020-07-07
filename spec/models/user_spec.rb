@@ -1,7 +1,7 @@
 require 'rails_helper'
 
-describe 'should have a secure password' do 
-    it { should have_secure_password }
+describe 'should have a secure password' do
+  it { should have_secure_password }
 end
 
 describe 'check validations' do
