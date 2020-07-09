@@ -11,6 +11,11 @@ In this project I was Created models with associations and implement all request
 [Find your Recipe](https://morning-ridge-74742.herokuapp.com/)
 
 
+## Link to API documentation
+(recipe_api)[https://documenter.getpostman.com/view/11701134/T17KbkNx?version=latest]
+
+- This API provides data for recipes, users can sign up/log in, create/ update/ delete recipes, and add to favorites.
+
 ## Getting started
 - [ ] To get started with the app, clone the repo and then install the needed gems:
 
