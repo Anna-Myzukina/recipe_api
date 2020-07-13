@@ -1,9 +1,11 @@
 class Api::V1::FavoritesController < ApplicationController
   before_action :set_favorite, only: [ :destroy]
+  
   def create
     @recipe = Recipe.find(params[:recipe_id])
     @recipe.clients << @current_user
-
+    @favorite = @recipe.favorites.build(favorite_params)
+    @favorite.save
     response = { message: 'Recipe successfully added!'}
     render json: response
  
@@ -18,8 +20,12 @@ class Api::V1::FavoritesController < ApplicationController
   end
 
   private
-    def set_favorite
+  def favorite_params
+    params.permit(:rate)
+  end
+
+  def set_favorite
       @favorite = Favorite.find(params[:id])
-    end
+  end
     
 end

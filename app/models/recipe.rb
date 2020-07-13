@@ -1,6 +1,6 @@
 class Recipe < ApplicationRecord
   belongs_to :user
-  has_many :favorites
+  has_many :favorites, foreign_key: :favorite_recipe_id
   has_many :clients, through: :favorites, source: :client
 
   validates :title, presence: true, length: { minimum: 5}
