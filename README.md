@@ -61,6 +61,13 @@ In this project I was Created models with associations and implement all request
 
 - [ ] User can add recipes to favorites (create list from favorite recipes):  [POST]   `http://localhost:3000/api/v1/recipes/:recipe_id/favorite`
 
+            {
+            "rate": 3
+
+            }
+
+
+
 - [ ] User can delete recipes from favorites (unfavorite recipe):  [DELETE]   `http://localhost:3000/api/v1/recipes/:recipe_id/unfavorite`
 
 ## Getting started
