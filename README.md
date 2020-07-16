@@ -16,7 +16,7 @@ In this project I was Created models with associations and implement all request
 
 - This API provides data for recipes, users can sign up/log in, create/ update/ delete recipes, and add to favorites.
 
-### Sample test
+### Examples
 
 - [ ] User can sign up: [POST] `http://localhost:3000/auth/sign_up`
 

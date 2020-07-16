@@ -7,5 +7,7 @@ class CreateFavorites < ActiveRecord::Migration[6.0]
 
       t.timestamps
     end
+    add_index :favorites, :client_id
+    add_index :favorites, :favorite_recipe_id
   end
 end

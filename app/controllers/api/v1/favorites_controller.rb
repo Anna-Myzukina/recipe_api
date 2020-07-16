@@ -3,12 +3,11 @@ class Api::V1::FavoritesController < ApplicationController
   
   def create
     @recipe = Recipe.find(params[:recipe_id])
-    @recipe.clients << @current_user
     @favorite = @recipe.favorites.build(favorite_params)
+    @favorite.client_id = @current_user.id
     @favorite.save
     response = { message: 'Recipe successfully added!'}
-    render json: response, status: :created 
-    
+    render json: response, status: :created    
   end
 
   def destroy

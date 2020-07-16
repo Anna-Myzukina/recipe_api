@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :favorites
   namespace :api do
     namespace :v1 do
       resources :recipes, only: [:index, :show, :update, :destroy, :create] do

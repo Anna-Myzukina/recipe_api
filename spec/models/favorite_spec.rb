@@ -1,5 +1,5 @@
 require 'rails_helper'
 
-describe 'check validations' do
-  it { should validate_presence_of :rate }
+RSpec.describe Favorite, type: :model do
+  pending "add some examples to (or delete) #{__FILE__}"
 end
