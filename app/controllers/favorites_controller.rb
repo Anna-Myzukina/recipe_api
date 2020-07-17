@@ -1,5 +1,5 @@
 class FavoritesController < ApplicationController
-  before_action :set_favorite, only: [:show, :update, :destroy]
+  before_action :set_favorite, only: %i[show update destroy]
 
   # GET /favorites
   # GET /favorites.json
@@ -9,8 +9,7 @@ class FavoritesController < ApplicationController
 
   # GET /favorites/1
   # GET /favorites/1.json
-  def show
-  end
+  def show; end
 
   # POST /favorites
   # POST /favorites.json
@@ -41,13 +40,14 @@ class FavoritesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_favorite
-      @favorite = Favorite.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def favorite_params
-      params.require(:favorite).permit(:client_id, :favorite_recipe_id, :rate)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_favorite
+    @favorite = Favorite.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def favorite_params
+    params.require(:favorite).permit(:client_id, :favorite_recipe_id, :rate)
+  end
 end

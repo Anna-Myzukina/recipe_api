@@ -1,16 +1,15 @@
 require 'rails_helper'
 RSpec.describe 'api request made via api/v1 users_controller', type: :request do
-
   describe 'post /auth/sign_up with complete params' do
     before do
       post '/auth/sign_up',
            params: { user: {
-            name: "Annanew",
-            email: "newanna@gmail.com",
-            password: "test123",
-            password_confirmation: "test123",
-            admin: true
-             
+             name: 'Annanew',
+             email: 'newanna@gmail.com',
+             password: 'test123',
+             password_confirmation: 'test123',
+             admin: true
+
            } }
     end
 
