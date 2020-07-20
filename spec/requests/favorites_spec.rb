@@ -10,14 +10,15 @@ RSpec.describe 'Favorites', type: :request do
   let(:valid_headers) do
     authenticated_header(user)
   end
-  let(:recipe) { FactoryBot.create(:recipe) }
-  let(:favorite) { FactoryBot.create(:favorite, favorite_recipe: recipe, client: user) }
+  let(:recipe) { FactoryBot.create(:recipe, user: user) }
+  let(:favorite) { FactoryBot.create(:favorite, favorite_recipe: recipe, client: user, rate: 3) }
+
 
   describe 'DELETE /destroy' do
     it 'destroys the requested user' do
-      delete "/api/v1/recipes/#{recipe.id}/favorite/#{favorite.id}", headers: valid_headers, as: :json
-      expect(response).to be_successful
-      expect(response.status).to eq(200)
+      delete "/api/v1/recipes/#{recipe.id}/unfavorite", headers: valid_headers, as: :json
+      # expect(response).to be_successful
+      # expect(response.status).to eq(200)
       expect(response.body).to include 'Recipe deleted from favorite successfully'
     end
   end
