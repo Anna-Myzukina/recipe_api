@@ -11,9 +11,8 @@ class Api::V1::FavoritesController < ApplicationController
   end
 
   def destroy
-    @recipe = Recipe.find(params[:recipe_id])
-    @user = @recipe.clients
-    @recipe.clients.delete(@user)
+  
+    @favorite.destroy
     response = { message: 'Removed from favorites successfully!' }
     render json: response
   end
@@ -25,6 +24,7 @@ class Api::V1::FavoritesController < ApplicationController
   end
 
   def set_favorite
-    @favorite = Favorite.find(params[:id])
+    @recipe = Recipe.find(params[:recipe_id])
+    @favorite = @recipe.favorites.find(params[:id])
   end
 end
