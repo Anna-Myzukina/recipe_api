@@ -1,9 +1,9 @@
 FactoryBot.define do
   factory :recipe do
-    title { "MyString" }
-    ingredients { "MyText" }
-    description { "MyText" }
-    calories { 1 }
+    title { 'Pizza' }
+    ingredients { 'Lorem ipsum sed loran' }
+    description { 'Lorem ipsum sed loran' }
+    calories { 150 }
     user { nil }
   end
 end

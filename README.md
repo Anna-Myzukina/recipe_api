@@ -3,7 +3,6 @@
 
 ## Description
 
-`Users, recipes, favourit recipe.`
 
 In this project I was Created models with associations and implement all requested features for users, recipes and favourites. Added authentication as described in requirements.
 
@@ -11,6 +10,65 @@ In this project I was Created models with associations and implement all request
 
 [Find your Recipe](https://morning-ridge-74742.herokuapp.com/)
 
+
+## API Documentation
+["Recipe API"](https://documenter.getpostman.com/view/11701134/T17KbkNx?version=latest)
+
+- This API provides data for recipes, users can sign up/log in, create/ update/ delete recipes, and add to favorites.
+
+### Examples
+
+- [ ] User can sign up: [POST] `http://localhost:3000/auth/sign_up`
+
+      {
+      "name": "annamuz",
+      "email": "annamuz@gmail.com",
+      "password": "321123",
+      "password_confirmation": "321123",
+      "admin": true
+      }
+
+- [ ] User can login: [POST] `http://localhost:3000/auth/login` 
+
+      {
+      “auth”: {
+      "email": "annamuz@gmail.com",
+      "password": "321123"
+        }
+      }
+
+- [ ] User can edit account: [PATCH] `http://localhost:3000/api/v1/users/:id` 
+
+- [ ] User can delete account: [DELETE] `http://localhost:3000/api/v1/users/:id` 
+
+- [ ] User can create recipes:  [POST]   `http://localhost:3000/api/v1/recipes`
+
+            {
+            "title": "Pizza with mushrooms",
+            "ingredients": "1 tablespoon olive oil, 8 ounces mushrooms, 1/2 medium red onion, 2 cloves garlic, 1 cup marinara sauce, ",
+            "description": "Preheat the oven to 450 degrees F. Heat the oil in a skillet over medium heat. Add the mushrooms and onions and cook until tender and most of the liquid evaporates about 5 minutes. Stir in the garlic and remove from the heat. Place the pizza crust on a baking sheet. Spread the sauce over the crust leaving a 1-inch border. Top with the mushroom mixture and sun-dried tomatoes. Sprinkle with the mozzarella and Parmesan cheeses. Bake until the crust is crisp and the cheese is nicely melted about 13 minutes. Sprinkle with basil, cut into 8 slices and serve.",
+            "calories": 350,
+            "user_id": 1
+            }
+
+
+- [ ] User can update recipes:  [PATCH]   `http://localhost:3000/api/v1/recipes/:id`
+
+
+- [ ] User can delete recipes:  [DELETE]   `http://localhost:3000/api/v1/recipes/:id`
+
+- [ ] User can get all recipes:  [GET]   `http://localhost:3000/api/v1/recipes/:id`
+
+- [ ] User can add recipes to favorites (create list from favorite recipes):  [POST]   `http://localhost:3000/api/v1/recipes/:recipe_id/favorite`
+
+            {
+            "rate": 3
+
+            }
+
+
+
+- [ ] User can delete recipes from favorites (unfavorite recipe):  [DELETE]   `http://localhost:3000/api/v1/recipes/:recipe_id/unfavorite`
 
 ## Getting started
 - [ ] To get started with the app, clone the repo and then install the needed gems:
@@ -25,11 +83,10 @@ $ bundle install --without production
 $ rails db:create
 ```
 
-- [ ]
+```
+$ rails db:migrate
+```
 
-- [ ]
-
-- [ ]
 ## Features
 
 - [ ] The user logs in the app, only by typing the username (a proper authenticated login is not a mandatory requirement, but it is in the nice-to-have list)
@@ -40,11 +97,7 @@ $ rails db:create
 
 - [ ] The user can access a list of favourite apartments
 
-* The database should have at least 2 tables — in this example, houses and favourites, i.e., the favourites can be accessed by all users unless you implement a proper user authentication (more on this later). To create ERD(Entity Relationship Diagram) diagram, it`s image of your future database, I used online tool [lucidchart](https://www.lucidchart.com/) to draw that diagram, create folder "docs" and add to folder that image with diagram. Follow this video to understand how it works [Entity Relationship Diagram (ERD) Tutorial - Part 1](https://www.youtube.com/watch?v=QpdhBUYk7Kk&vl=en)
-* Watch next video to be familiar with Primary and Foreign Keys [Entity Relationship Diagram (ERD) Tutorial - Part 2](https://www.youtube.com/watch?v=-CuY5ADwn24)
 
-Here is a screenshot with example of such image with diagram:
-![screen](#)
 
 
 ## Environment:
@@ -87,95 +140,6 @@ $ rails generate rspec:install
 ```
 $ rspec
 ```
-
-### How start to create the same project with --api
-
-        rails new name-of-application --webpack=react --database=postgresql  --api -T
-
-#### This will do next things for you:
-
-* The `-T` flag instructs Rails to skip the generation of test files, since you won’t be writing tests for the purposes of this tutorial. This command is also suggested if you want to use a Ruby testing tool different from the one Rails provides.
-
-* The --webpack instructs Rails to preconfigure for JavaScript with the webpack bundler, in this case specifically for a React application.
-
-* Configure your application to start with a more limited set of middleware than normal. Specifically, it will not include any middleware primarily useful for browser applications (like cookies support) by default.
-
-* Make ApplicationController inherit from ActionController::API instead of ActionController::Base. As with middleware, this will leave out any Action Controller modules that provide functionalities primarily used by browser applications.
-
-* Configure the generators to skip generating views, helpers, and assets when you generate a new resource.
-
-### Start to create the same project without --api
-
-! If you created your app running next command 
-
-            rails new name-of-application --webpack=react --database=postgresql -T
-
-and now you want to take an existing application and make it an API one, follow the next steps: 
-
-In `config/application.rb` add the following line at the top of the Application class definition:
-
-            config.api_only = true
-            
-In `config/environments/development.rb`, set `config.debug_exception_response_format` to configure the format used in responses when errors occur in development mode.
-
-To render an HTML page with debugging information, use the value `:default`.
-
-            config.debug_exception_response_format = :default
-            
-To render debugging information preserving the response format, use the value `:api`.
-
-            config.debug_exception_response_format = :api
-            
-By default, `config.debug_exception_response_format` is set to `:api`, when config.api_only is set to true.
-
-Finally, inside `app/controllers/application_controller.rb`, instead of:
-
-
-                        class ApplicationController < ActionController::Base
-                        end
-do:
-
-                        class ApplicationController < ActionController::API
-                        end
-
-        
-       
-### The reset to undo changes. The clean to remove any untracked files and directories.
-
-            $ git reset --hard HEAD
-            $ git clean -fd 
-
-            
-
-* NOTE before start chreate project using this command (name_of_project it`s example, you should change it on your own name of your project for example: facebook-clone...)
-
-        rails new name_of_project --webpack=react --database=postgresql
-       
-* NOTE itis very important!!! You should install postgresql in your operating system! Next article should help: [How To Install and Use PostgreSQL on Ubuntu 18.04](https://www.digitalocean.com/community/tutorials/how-to-install-and-use-postgresql-on-ubuntu-18-04)
-        
-* This article and video can be useful [The Ultimate Intermediate Ruby on Rails Tutorial: Let’s Create an Entire App!](https://www.freecodecamp.org/news/lets-create-an-intermediate-level-ruby-on-rails-application-d7c6e997c63f/) , also this article [Adding Authentication with Devise](https://guides.railsgirls.com/devise) and video: [Testing with RSpec](https://www.youtube.com/watch?v=71eKcNxwxVY)
-
-* NOTE If you forgot during creating your app add next peace of code --database=postgresql please follow next article [Making the Change From SQLite3 to PostgreSQL - Ruby on Rails](https://dev.to/torianne02/making-the-change-from-sqlite3-to-postgresql-ruby-on-rails-2m0p) and add postgresql manually : But main you should add lat version of postgress.
-
-* NOTE if you need to add column to your database please use next command
-
-        rails generate migration add_fieldname_to_tablename fieldname:string. 
-        
-        
-* NOTE Sometimes, even dropping a local development database is not a good idea. There are better ways to delete/destroy a specific migration in your Rails application.
-
-You could use rails d migration command to destroy a particular migration:
-
-rails d migration MigrationName
-To undo the changes corresponding to a particular migration, you can use db:migrate:down method like this:
-
-        rake db:migrate:down VERSION=XXX
-
-* version you can find in file schema.rb
-
-after you that command you delete that file donot forgor to run
-
-        rails db:migrate
 
 ## Show your support
 
